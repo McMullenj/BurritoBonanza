@@ -1,60 +1,140 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import ItemList from "./ItemList.js";
+import ItemListMultiple from "./ItemListMultiple.js";
 
-class BurritoForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      message: "",
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+const people = ["Dana", "Alisha", "Fiona", "Other"];
 
-  handleChange(event) {
-    const inputValue = event.target.value;
-    const stateField = event.target.name;
-    this.setState({
-      [stateField]: inputValue,
-    });
-    console.log(this.state);
-  }
-  async handleSubmit(event) {
-    event.preventDefault();
-    const { name, message } = this.state;
-    await axios.post(
-      "https://i1xsjzkri4.execute-api.us-east-1.amazonaws.com/default/serverlessAppFunction",
-      { key1: `${name}, ${message}` }
-    );
-  }
+const meals = [
+  "Burrito",
+  "Bowl",
+  "Signature Burrito",
+  "Signature Bowl",
+  "Quesadilla Stack",
+  "Nachos",
+];
 
-  render() {
-    return (
-      <div>
-        <header>HELLOOO</header>
-        <form onSubmit={this.handleSubmit}>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            onChange={this.handleChange}
-            value={this.state.name}
-          />
+const yesno = ["Yes", "No"];
+const rices = ["White Rice", "Black Rice"];
+const salads = [
+  "Cheese",
+  "Sour Cream",
+  "Vegan Cheese",
+  "Vegan Sour Cream",
+  "Guacamole (+$2)",
+  "Lettuce",
+  "Tomato Salsa",
+  "Corn",
+  "Onion",
+  "Jalapenos",
+  "lime",
+];
+const sizes = ["Big", "Medium", "Small", "NA"];
+const proteins = [
+  "Barbacoa Beef",
+  "Chicken",
+  "Lamb",
+  "Pulled Pork",
+  "Spicy Cauliflower",
+];
+const sauces = [
+  "Basilo",
+  "Chipotle",
+  "Garlic",
+  "Red Chilli",
+  "Secret BBQ",
+  "Trezigo",
+  "Verde",
+];
 
-          <label>Message:</label>
-          <input
-            type="text"
-            name="message"
-            onChange={this.handleChange}
-            value={this.state.message}
-          />
+function BurritoForm() {
+  const [person, setPerson] = useState("");
+  const [meal, setMeal] = useState("");
+  const [rice, setRice] = useState("");
+  const [salad, setSalad] = useState("");
+  const [protein, setProtein] = useState("");
+  const [sauce, setSauce] = useState("");
+  const [toasted, setToasted] = useState("");
+  const [bean, setBean] = useState("");
+  const [size, setSize] = useState("");
+  const [anything, setAnything] = useState("");
 
-          <button type="submit">Send</button>
-        </form>
+  const handleSubmit = async () => {
+    try {
+      await axios.post(
+        "https://j2t0zhcnhd.execute-api.ap-southeast-2.amazonaws.com/default/MakeBurritoOrder",
+        {
+          person: `${person}`,
+          meal: `${meal}`,
+          size: `${size}`,
+          rice: `${rice}`,
+          bean: `${bean}`,
+          protein: `${protein}`,
+          salad: `${salad}`,
+          sauce: `${sauce}`,
+          toasted: `${toasted}`,
+          other: `${anything}`,
+        }
+      );
+      alert(
+        `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
+      );
+    } catch (error) {
+      alert("Something went wrong, please contact James: ", error);
+    }
+  };
+
+  return (
+    <div>
+      <div style={{ paddingBottom: "20px", paddingTop: "50px" }}>
+        <div>
+          <label>Who are you?</label>
+          <ItemList items={people} onSelectItem={setPerson} />
+        </div>
+        <div>
+          <label>Zambreros Meal</label>
+          <ItemList items={meals} onSelectItem={setMeal} />
+        </div>
+        <div>
+          <label>Size (For Burrito, Bowls and Nachos)</label>
+          <ItemList items={sizes} onSelectItem={setSize} />
+        </div>
+        <div>
+          <label>Do you want it toasted +$0.5? (burritos only)</label>
+          <ItemList items={yesno} onSelectItem={setToasted} />
+        </div>
+        <div>
+          <label>Rice?</label>
+          <ItemList items={rices} onSelectItem={setRice} />
+        </div>
+        <div>
+          <label>Beans?</label>
+          <ItemList items={yesno} onSelectItem={setBean} />
+        </div>
+        <div>
+          <label>Salads</label>
+          <ItemListMultiple items={salads} onSelectItem={setSalad} />
+        </div>
+        <div>
+          <label>Protein</label>
+          <ItemList items={proteins} onSelectItem={setProtein} />
+        </div>
+        <div>
+          <label>Sauce</label>
+          <ItemListMultiple items={sauces} onSelectItem={setSauce} />
+        </div>
+        <label>Anything you want to add?</label>
+        <input type="text" placeholder="Add anything" onChange={setAnything} />
       </div>
-    );
-  }
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        style={{ alignItems: "center" }}
+      >
+        Next
+      </button>
+    </div>
+  );
 }
 
 export default BurritoForm;
