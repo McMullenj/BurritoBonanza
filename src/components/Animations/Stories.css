@@ -69,8 +69,8 @@
 
 .dan-talking {
   position: fixed;
-  bottom: -200px;
-  right: -200px;
+  bottom: -100px;
+  right: 0px;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -89,8 +89,8 @@
 
 .dan-talking2 {
   position: fixed;
-  bottom: -210px;
-  right: -200px;
+  bottom: -110px;
+  right: 0px;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -186,5 +186,65 @@
   100% {
     bottom: 0px;
     right: 90px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .typing-animation,
+  .typing-animation-long,
+  .daniel-hearing,
+  .dan-talking,
+  .dan-talking2,
+  .dan-thinking,
+  .dan-thinking2 {
+    font-size: 100%;
+  }
+  .daniel-hearing {
+    width: 40%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .typing-animation,
+  .typing-animation-long,
+  .daniel-hearing,
+  .dan-talking,
+  .dan-talking2,
+  .dan-thinking,
+  .dan-thinking2 {
+    font-size: 120%;
+  }
+  .daniel-hearing {
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .typing-animation,
+  .typing-animation-long,
+  .daniel-hearing,
+  .dan-talking,
+  .dan-talking2,
+  .dan-thinking,
+  .dan-thinking2 {
+    font-size: 60%;
+  }
+  .daniel-hearing {
+    width: 30%;
+  }
+}
+
+@media (max-width: 576px) {
+  .typing-animation,
+  .typing-animation-long,
+  .daniel-hearing,
+  .dan-talking,
+  .dan-talking2,
+  .dan-thinking,
+  .dan-thinking2 {
+    font-size: 40%;
+  }
+  .daniel-hearing {
+    width: 30%;
   }
 }

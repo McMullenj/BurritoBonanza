@@ -24,6 +24,7 @@ const people = [
   "Corey",
   "Sophie",
   "Noah",
+  "Just testing the app",
   'Other (Add to the "Anything else" section later on)',
 ];
 
