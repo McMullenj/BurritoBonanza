@@ -10,7 +10,7 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/BurritoForm" element={<BurritoForm />} />
-          <Route path="/StoryHolder" element={<StoryHolder />} />
+          <Route path="/BurritoTale" element={<StoryHolder />} />
         </Routes>
         <RoutesBox />
       </div>
