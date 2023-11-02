@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./StoryHolder.css";
 import axios from "axios";
-import ItemList from "./ItemList.js";
-import ItemListMultiple from "./ItemListMultiple.js";
-
-const people = ["Dana", "Alisha", "Fiona", "Other"];
+import Story1 from "./Story1.js";
 
 const meals = [
   "Burrito",
@@ -47,7 +45,9 @@ const sauces = [
   "Verde",
 ];
 
-function BurritoForm() {
+function StoryHolder() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isFading, setIsFading] = useState(false);
   const [person, setPerson] = useState("");
   const [meal, setMeal] = useState("");
   const [rice, setRice] = useState("");
@@ -83,55 +83,29 @@ function BurritoForm() {
     }
   };
 
+  useEffect(() => {
+    // Trigger the fade-in effect after a delay (e.g., 1 second)
+    const timer = setTimeout(() => {
+      setIsFading(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleStory1Click = (chosenPerson) => {
+    setPerson(chosenPerson);
+    setCurrentStep(currentStep + 1);
+  };
+
   return (
     <div>
-      <div style={{ paddingBottom: "20px", paddingTop: "50px" }}>
-        <div>
-          <label>Who are you?</label>
-          <ItemList items={people} onSelectItem={setPerson} />
+      {currentStep === 1 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story1 makeDecision={handleStory1Click} />
         </div>
-        <div>
-          <label>Zambreros Meal</label>
-          <ItemList items={meals} onSelectItem={setMeal} />
-        </div>
-        <div>
-          <label>Size (For Burrito, Bowls and Nachos)</label>
-          <ItemList items={sizes} onSelectItem={setSize} />
-        </div>
-        <div>
-          <label>Do you want it toasted +$0.5? (burritos only)</label>
-          <ItemList items={yesno} onSelectItem={setToasted} />
-        </div>
-        <div>
-          <label>Rice?</label>
-          <ItemList items={rices} onSelectItem={setRice} />
-        </div>
-        <div>
-          <label>Beans?</label>
-          <ItemList items={yesno} onSelectItem={setBean} />
-        </div>
-        <div>
-          <label>Salads</label>
-          <ItemListMultiple items={salads} onSelectItem={setSalad} />
-        </div>
-        <div>
-          <label>Protein</label>
-          <ItemList items={proteins} onSelectItem={setProtein} />
-        </div>
-        <div>
-          <label>Sauce</label>
-          <ItemListMultiple items={sauces} onSelectItem={setSauce} />
-        </div>
-      </div>
-      <button
-        type="submit"
-        onClick={handleSubmit}
-        style={{ alignItems: "center" }}
-      >
-        Next
-      </button>
+      )}
     </div>
   );
 }
 
-export default BurritoForm;
+export default StoryHolder;

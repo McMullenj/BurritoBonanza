@@ -1,0 +1,31 @@
+/* ItemList.css */
+.item-list {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+}
+
+.item-list-container {
+  border: 2px solid #ccc;
+  padding: 0; /* Remove padding from the container */
+  border-radius: 5px;
+  max-height: 200px;
+  background-color: #f0f0f0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.selected {
+  background-color: green;
+  color: white;
+  width: 100%; /* Expand the green highlight to the edges of the container */
+  text-align: center; /* Center text horizontally */
+  width: 100h; /* Expand the green highlight to the edges of the container */
+}
+
+/* Add spacing between items */
+.item-list li {
+  margin: 5px 0;
+  width: 100h; /* Expand the green highlight to the edges of the container */
+}

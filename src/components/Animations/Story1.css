@@ -1,0 +1,22 @@
+.typing-animation {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 1.5s steps(30, end) forwards;
+}
+
+.background-switcher {
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes typing {
+  to {
+    width: 100%;
+  }
+}

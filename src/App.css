@@ -28,6 +28,37 @@
   color: #61dafb;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: 100h; /* This ensures the container takes the full viewport height */
+}
+
+/* App.css */
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+}
+
+.box button {
+  margin: 0 10px;
+}
+
+body {
+  background-image: url(./resources/White_Tortilla.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #8af6ee17;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
