@@ -2,7 +2,29 @@ import ItemList from "../ItemList.js";
 import React, { useState, useEffect } from "react";
 import "./Stories.css";
 
-const people = ["Dana", "Alisha", "Fiona", "Other"];
+const people = [
+  "Dana",
+  "Dan",
+  "Alisha",
+  "Olivia",
+  "Harriet",
+  "Charlotte",
+  "Fiona",
+  "David",
+  "Richard",
+  "Amanda",
+  "Matt",
+  "Jack",
+  "Jess",
+  "Emma",
+  "Grace",
+  "James",
+  "Bjorn",
+  "Corey",
+  "Sophie",
+  "Noah",
+  'Other (Add to the "Anything else" section later on)',
+];
 const images = [
   "/2DanaWantsBurrito.png",
   "/3DanThinksBurrito.png",

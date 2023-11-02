@@ -10,6 +10,10 @@ const Story8 = ({ makeDecision, back }) => {
     makeDecision(anything);
   };
 
+  const handleAnythingChange = (event) => {
+    setAnything(event.target.value);
+  };
+
   useEffect(() => {
     document.body.style.backgroundImage = `url(${images[0]})`;
   });
@@ -28,7 +32,8 @@ const Story8 = ({ makeDecision, back }) => {
             <input
               type="text"
               placeholder="Add anything"
-              onChange={setAnything}
+              value={anything}
+              onChange={handleAnythingChange}
             />
           </div>
         </div>

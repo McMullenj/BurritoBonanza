@@ -11,7 +11,7 @@ const Story10 = () => {
 
   const text5 = (
     <div>
-      <div className="dan-thinking">Your order has been made</div>;
+      <div className="dan-thinking">Your order has been placed</div>;
     </div>
   );
   const text4 = (

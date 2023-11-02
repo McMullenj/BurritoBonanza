@@ -3,7 +3,29 @@ import axios from "axios";
 import ItemList from "./ItemList.js";
 import ItemListMultiple from "./ItemListMultiple.js";
 
-const people = ["Dana", "Alisha", "Fiona", "Other"];
+const people = [
+  "Dana",
+  "Dan",
+  "Alisha",
+  "Olivia",
+  "Harriet",
+  "Charlotte",
+  "Fiona",
+  "David",
+  "Richard",
+  "Amanda",
+  "Matt",
+  "Jack",
+  "Jess",
+  "Emma",
+  "Grace",
+  "James",
+  "Bjorn",
+  "Corey",
+  "Sophie",
+  "Noah",
+  'Other (Add to the "Anything else" section later on)',
+];
 
 const meals = [
   "Burrito",
@@ -77,19 +99,23 @@ function BurritoForm() {
         }
       );
       alert(
-        `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
+        `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce} Other: ${anything}`
       );
     } catch (error) {
       alert("Something went wrong, please contact James: ", error);
     }
   };
 
+  const handleAnythingChange = (event) => {
+    setAnything(event.target.value); // Update the "anything" state with the input value
+  };
+
   return (
     <div>
       <div style={{ paddingBottom: "20px", paddingTop: "50px" }}>
         <div>
-          <label>Who are you?</label>
-          <ItemList items={people} onSelectItem={setPerson} />
+          <label>What's your name?:</label>
+          <input type="text" placeholder="Name:" onChange={setPerson} />
         </div>
         <div>
           <label>Zambreros Meal</label>
@@ -124,7 +150,12 @@ function BurritoForm() {
           <ItemListMultiple items={sauces} onSelectItem={setSauce} />
         </div>
         <label>Anything you want to add?</label>
-        <input type="text" placeholder="Add anything" onChange={setAnything} />
+        <input
+          type="text"
+          placeholder="Add anything"
+          value={anything}
+          onChange={handleAnythingChange}
+        />
       </div>
       <button
         type="submit"
