@@ -2,48 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./StoryHolder.css";
 import axios from "axios";
 import Story1 from "./Story1.js";
-
-const meals = [
-  "Burrito",
-  "Bowl",
-  "Signature Burrito",
-  "Signature Bowl",
-  "Quesadilla Stack",
-  "Nachos",
-];
-
-const yesno = ["Yes", "No"];
-const rices = ["White Rice", "Black Rice"];
-const salads = [
-  "Cheese",
-  "Sour Cream",
-  "Vegan Cheese",
-  "Vegan Sour Cream",
-  "Guacamole (+$2)",
-  "Lettuce",
-  "Tomato Salsa",
-  "Corn",
-  "Onion",
-  "Jalapenos",
-  "lime",
-];
-const sizes = ["Big", "Medium", "Small", "NA"];
-const proteins = [
-  "Barbacoa Beef",
-  "Chicken",
-  "Lamb",
-  "Pulled Pork",
-  "Spicy Cauliflower",
-];
-const sauces = [
-  "Basilo",
-  "Chipotle",
-  "Garlic",
-  "Red Chilli",
-  "Secret BBQ",
-  "Trezigo",
-  "Verde",
-];
+import Story2 from "./Story2.js";
+import Story3 from "./Story3.js";
+import Story4 from "./Story4.js";
+import Story5 from "./Story5.js";
+import Story6 from "./Story6.js";
+import Story7 from "./Story7.js";
+import Story8 from "./Story8.js";
+import Story9 from "./Story9.js";
+import Story10 from "./Story10.js";
 
 function StoryHolder() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -57,27 +24,28 @@ function StoryHolder() {
   const [toasted, setToasted] = useState("");
   const [bean, setBean] = useState("");
   const [size, setSize] = useState("");
+  const [anything, setAnything] = useState("");
 
   const handleSubmit = async () => {
     try {
-      console.log(person);
       await axios.post(
         "https://j2t0zhcnhd.execute-api.ap-southeast-2.amazonaws.com/default/MakeBurritoOrder",
         {
           person: `${person}`,
           meal: `${meal}`,
+          size: `${size}`,
           rice: `${rice}`,
-          salad: `${salad}`,
+          bean: `${bean}`,
           protein: `${protein}`,
+          salad: `${salad}`,
           sauce: `${sauce}`,
           toasted: `${toasted}`,
-          bean: `${bean}`,
-          size: `${size}`,
+          other: `${anything}`,
         }
       );
-      alert(
-        `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
-      );
+      //   alert(
+      //     `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
+      //   );
     } catch (error) {
       alert("Something went wrong, please contact James: ", error);
     }
@@ -97,11 +65,119 @@ function StoryHolder() {
     setCurrentStep(currentStep + 1);
   };
 
+  const handleStory2Click = (chosenMeal, chosenSize) => {
+    setMeal(chosenMeal);
+    setSize(chosenSize);
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handleStory3Click = (chosenToasted) => {
+    setToasted(chosenToasted);
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handleStory4Click = (chosenBean, chosenRice) => {
+    setBean(chosenBean);
+    setRice(chosenRice);
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handleStory5Click = (chosenProtein) => {
+    setProtein(chosenProtein);
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handleStory6Click = (chosenSalad) => {
+    setSalad(chosenSalad);
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handleStory7Click = (chosenSauce) => {
+    setSauce(chosenSauce);
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handleStory8Click = (chosenAnything) => {
+    setAnything(chosenAnything);
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handleStory9ClickYes = () => {
+    handleSubmit();
+    setCurrentStep(currentStep + 1);
+  };
+  const handleStory9ClickNo = () => {
+    setCurrentStep(1);
+  };
+
+  const goBack = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
   return (
     <div>
       {currentStep === 1 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
           <Story1 makeDecision={handleStory1Click} />
+        </div>
+      )}
+      {currentStep === 2 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story2 makeDecision={handleStory2Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 3 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story3 makeDecision={handleStory3Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 4 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story4 makeDecision={handleStory4Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 5 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story5 makeDecision={handleStory5Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 6 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story6 makeDecision={handleStory6Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 7 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story7 makeDecision={handleStory7Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 8 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story8 makeDecision={handleStory8Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 9 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story9
+            makeDecision={handleStory9ClickYes}
+            makeDecision2={handleStory9ClickNo}
+            summary={{
+              person,
+              meal,
+              size,
+              toasted,
+              bean,
+              rice,
+              protein,
+              salad,
+              sauce,
+            }}
+          />
+        </div>
+      )}
+      {currentStep === 10 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story10 />
         </div>
       )}
     </div>

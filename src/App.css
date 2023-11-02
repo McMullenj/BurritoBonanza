@@ -52,10 +52,11 @@
 }
 
 body {
-  background-image: url(./resources/White_Tortilla.png);
+  background-image: url("/public/1FrontPage.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
   background-color: #8af6ee17;
 }
 
