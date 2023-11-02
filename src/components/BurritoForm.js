@@ -116,7 +116,7 @@ function BurritoForm() {
       <div style={{ paddingBottom: "20px", paddingTop: "50px" }}>
         <div>
           <label>What's your name?:</label>
-          <input type="text" placeholder="Name:" onChange={setPerson} />
+          <ItemList items={people} onSelectItem={setPerson}></ItemList>
         </div>
         <div>
           <label>Zambreros Meal</label>

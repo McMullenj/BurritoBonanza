@@ -56,16 +56,20 @@ const Story1 = ({ makeDecision }) => {
   const danaSpeech = (
     <div>
       <div className="typing-animation-long">
-        Hi there I'm Dana and I'm a really good engineer. But with all this
-        engineering, I really feel like eating a Burrito.
+        Hi there I'm Dana and I'm a really good engineer.
+      </div>
+      <div className="typing-animation-long">
+        But with all this engineering, I really feel like eating a Burrito.
       </div>
       <div className="dan-talking">
         Do you hear that? That really pretty woman named "Dana" wants a
         burrito...
       </div>
       <div className="dan-talking2">
-        Maybe I can win her heart by getting her one since she's so busy with
-        her engineering
+        Maybe I can win her heart by getting her one
+      </div>
+      <div className="dan-talking2">
+        since she's so busy with her engineering
       </div>
       <img
         className="daniel-hearing"
