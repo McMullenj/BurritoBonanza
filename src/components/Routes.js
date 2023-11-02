@@ -21,11 +21,14 @@ function RoutesBox() {
       >
         {isVisible && (
           <div className="box">
+            <header>Do you want legendary tale of Dana's Burrito?</header>
             <Link to="/StoryHolder">
               <button onClick={handleClick}>Yes</button>
             </Link>
             <Link to="/BurritoForm">
-              <button onClick={handleClick}>No</button>
+              <button onClick={handleClick}>
+                No, I just want to order a burrito
+              </button>
             </Link>
           </div>
         )}

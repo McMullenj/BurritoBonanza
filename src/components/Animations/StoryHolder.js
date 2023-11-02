@@ -11,6 +11,7 @@ import Story7 from "./Story7.js";
 import Story8 from "./Story8.js";
 import Story9 from "./Story9.js";
 import Story10 from "./Story10.js";
+import StoryStart from "./StoryStart.js";
 
 function StoryHolder() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -43,9 +44,9 @@ function StoryHolder() {
           other: `${anything}`,
         }
       );
-      //   alert(
-      //     `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
-      //   );
+      alert(
+        `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
+      );
     } catch (error) {
       alert("Something went wrong, please contact James: ", error);
     }
@@ -61,6 +62,8 @@ function StoryHolder() {
   }, []);
 
   const handleStory1Click = (chosenPerson) => {
+    console.log("person: " + chosenPerson);
+
     setPerson(chosenPerson);
     setCurrentStep(currentStep + 1);
   };
@@ -107,7 +110,7 @@ function StoryHolder() {
     setCurrentStep(currentStep + 1);
   };
   const handleStory9ClickNo = () => {
-    setCurrentStep(1);
+    setCurrentStep(2);
   };
 
   const goBack = () => {
@@ -118,45 +121,50 @@ function StoryHolder() {
     <div>
       {currentStep === 1 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story1 makeDecision={handleStory1Click} />
+          <StoryStart goToStory={handleStory9ClickNo} />
         </div>
       )}
       {currentStep === 2 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story2 makeDecision={handleStory2Click} back={goBack} />
+          <Story1 makeDecision={handleStory1Click} />
         </div>
       )}
       {currentStep === 3 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story3 makeDecision={handleStory3Click} back={goBack} />
+          <Story2 makeDecision={handleStory2Click} back={goBack} />
         </div>
       )}
       {currentStep === 4 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story4 makeDecision={handleStory4Click} back={goBack} />
+          <Story3 makeDecision={handleStory3Click} back={goBack} />
         </div>
       )}
       {currentStep === 5 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story5 makeDecision={handleStory5Click} back={goBack} />
+          <Story4 makeDecision={handleStory4Click} back={goBack} />
         </div>
       )}
       {currentStep === 6 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story6 makeDecision={handleStory6Click} back={goBack} />
+          <Story5 makeDecision={handleStory5Click} back={goBack} />
         </div>
       )}
       {currentStep === 7 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story7 makeDecision={handleStory7Click} back={goBack} />
+          <Story6 makeDecision={handleStory6Click} back={goBack} />
         </div>
       )}
       {currentStep === 8 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
-          <Story8 makeDecision={handleStory8Click} back={goBack} />
+          <Story7 makeDecision={handleStory7Click} back={goBack} />
         </div>
       )}
       {currentStep === 9 && (
+        <div className={`fade-in ${isFading ? "active" : ""}`}>
+          <Story8 makeDecision={handleStory8Click} back={goBack} />
+        </div>
+      )}
+      {currentStep === 10 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
           <Story9
             makeDecision={handleStory9ClickYes}
@@ -175,7 +183,7 @@ function StoryHolder() {
           />
         </div>
       )}
-      {currentStep === 10 && (
+      {currentStep === 11 && (
         <div className={`fade-in ${isFading ? "active" : ""}`}>
           <Story10 />
         </div>

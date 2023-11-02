@@ -5,7 +5,7 @@ import "./Stories.css";
 const images = ["/6ChooseToasted.png"];
 const yesno = ["Yes", "No"];
 
-const Story3 = ({ makeDecision }) => {
+const Story3 = ({ makeDecision, back }) => {
   const [toasted, setToasted] = useState("");
 
   const handleSubmit = () => {
@@ -34,6 +34,7 @@ const Story3 = ({ makeDecision }) => {
         </div>
         <div>
           <button onClick={handleSubmit}>Submit</button>
+          <button onClick={back}>Go back</button>
         </div>
       </div>
     </div>

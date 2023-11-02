@@ -27,9 +27,7 @@ const Story9 = ({ makeDecision, makeDecision2, summary }) => {
         <div className="typing-animation-long">
           Wow that's so nice of you! I actually already got you and I a Burrito
         </div>
-        <div className="typing-animation">
-          You can keep that one you made
-        </div>
+        <div className="typing-animation">You can keep that one you made</div>
       </div>
     );
   };
@@ -42,13 +40,13 @@ const Story9 = ({ makeDecision, makeDecision2, summary }) => {
         </div>
         <div className="dan-thinking2">
           <div>
-            {person} {meal} Size: {size} Beans: {bean} Rice: {rice}
+            Name:{person} {meal} Size: {size} | Beans: {bean} | Rice: {rice}
           </div>
           <div>
             {protein} Toasted: {toasted}
           </div>
           <div>
-            Salads: {salad} Sauce: {sauce}
+            Salads: {salad} | Sauce: {sauce}
           </div>
           Is this right?
           <button onClick={handleSubmit1} style={{ alignItems: "center" }}>

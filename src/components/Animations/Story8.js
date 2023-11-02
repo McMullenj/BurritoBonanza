@@ -3,7 +3,7 @@ import "./Stories.css";
 
 const images = ["/11AnythingElse.png"];
 
-const Story8 = ({ makeDecision }) => {
+const Story8 = ({ makeDecision, back }) => {
   const [anything, setAnything] = useState("");
 
   const handleSubmit = () => {
@@ -28,13 +28,13 @@ const Story8 = ({ makeDecision }) => {
             <input
               type="text"
               placeholder="Add anything"
-              value={anything}
               onChange={setAnything}
             />
           </div>
         </div>
         <div>
           <button onClick={handleSubmit}>Submit</button>
+          <button onClick={back}>Go back</button>
         </div>
       </div>
     </div>

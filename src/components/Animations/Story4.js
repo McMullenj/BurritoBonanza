@@ -6,7 +6,7 @@ const images = ["/7ChooseBeansAndRice.png"];
 const yesno = ["Yes", "No"];
 const rices = ["White Rice", "Black Rice", "None"];
 
-const Story4 = ({ makeDecision }) => {
+const Story4 = ({ makeDecision, back }) => {
   const [rice, setRice] = useState("");
   const [bean, setBean] = useState("");
 
@@ -45,6 +45,7 @@ const Story4 = ({ makeDecision }) => {
         </div>
         <div>
           <button onClick={handleSubmit}>Submit</button>
+          <button onClick={back}>Go back</button>
         </div>
       </div>
     </div>

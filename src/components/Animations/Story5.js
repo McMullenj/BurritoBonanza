@@ -11,7 +11,7 @@ const proteins = [
   "Spicy Cauliflower",
 ];
 
-const Story5 = ({ makeDecision }) => {
+const Story5 = ({ makeDecision, back }) => {
   const [protein, setProtein] = useState("");
 
   const handleSubmit = () => {
@@ -36,6 +36,7 @@ const Story5 = ({ makeDecision }) => {
         </div>
         <div>
           <button onClick={handleSubmit}>Submit</button>
+          <button onClick={back}>Go back</button>
         </div>
       </div>
     </div>

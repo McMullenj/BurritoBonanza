@@ -57,22 +57,23 @@ function BurritoForm() {
   const [toasted, setToasted] = useState("");
   const [bean, setBean] = useState("");
   const [size, setSize] = useState("");
+  const [anything, setAnything] = useState("");
 
   const handleSubmit = async () => {
     try {
-      console.log(person);
       await axios.post(
         "https://j2t0zhcnhd.execute-api.ap-southeast-2.amazonaws.com/default/MakeBurritoOrder",
         {
           person: `${person}`,
           meal: `${meal}`,
+          size: `${size}`,
           rice: `${rice}`,
-          salad: `${salad}`,
+          bean: `${bean}`,
           protein: `${protein}`,
+          salad: `${salad}`,
           sauce: `${sauce}`,
           toasted: `${toasted}`,
-          bean: `${bean}`,
-          size: `${size}`,
+          other: `${anything}`,
         }
       );
       alert(
@@ -122,6 +123,8 @@ function BurritoForm() {
           <label>Sauce</label>
           <ItemListMultiple items={sauces} onSelectItem={setSauce} />
         </div>
+        <label>Anything you want to add?</label>
+        <input type="text" placeholder="Add anything" onChange={setAnything} />
       </div>
       <button
         type="submit"

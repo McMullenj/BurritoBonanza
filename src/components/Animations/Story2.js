@@ -17,7 +17,7 @@ const images = ["/5ChooseMealAndSize.png"];
 
 const timers = [8000];
 
-const Story2 = ({ makeDecision }) => {
+const Story2 = ({ makeDecision, back }) => {
   const [meal, setMeal] = useState("");
   const [size, setSize] = useState("");
 
@@ -82,6 +82,7 @@ const Story2 = ({ makeDecision }) => {
 
         <div>
           <button onClick={handleSubmit}>Submit</button>
+          <button onClick={back}>Go back</button>
         </div>
       </div>
     </div>

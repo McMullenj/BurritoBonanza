@@ -1,4 +1,4 @@
-import ItemList from ".././ItemList.js";
+import ItemList from "../ItemList.js";
 import React, { useState, useEffect } from "react";
 import "./Stories.css";
 
@@ -13,12 +13,6 @@ const images = [
 const timers = [16000, 9000, 7000];
 
 const Story1 = ({ makeDecision }) => {
-  const [person, setPerson] = useState("");
-
-  const handleSubmit = () => {
-    makeDecision(person);
-  };
-
   const decision = () => {
     return (
       <div>
@@ -28,12 +22,10 @@ const Story1 = ({ makeDecision }) => {
         <div className="typing-animation" style={{ marginTop: "100px" }}>
           <div style={{ paddingBottom: "20px" }}>
             <label>Select your name:</label>
-            <ItemList items={people} onSelectItem={setPerson}></ItemList>
+            <ItemList items={people} onSelectItem={makeDecision}></ItemList>
           </div>
-          <button onClick={handleSubmit} style={{ alignItems: "center" }}>
-            Submit
-          </button>
         </div>
+        <div></div>
       </div>
     );
   };

@@ -16,7 +16,7 @@ const salads = [
   "Jalapenos",
   "lime",
 ];
-const Story6 = ({ makeDecision }) => {
+const Story6 = ({ makeDecision, back }) => {
   const [salad, setSalad] = useState("");
 
   const handleSubmit = () => {
@@ -47,6 +47,7 @@ const Story6 = ({ makeDecision }) => {
         </div>
         <div>
           <button onClick={handleSubmit}>Submit</button>
+          <button onClick={back}>Go back</button>
         </div>
       </div>
     </div>

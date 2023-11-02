@@ -13,7 +13,7 @@ const sauces = [
   "Verde",
 ];
 
-const Story7 = ({ makeDecision }) => {
+const Story7 = ({ makeDecision, back }) => {
   const [sauce, setSauce] = useState("");
 
   const handleSubmit = () => {
@@ -43,6 +43,7 @@ const Story7 = ({ makeDecision }) => {
         </div>
         <div>
           <button onClick={handleSubmit}>Submit</button>
+          <button onClick={back}>Go back</button>
         </div>
       </div>
     </div>
