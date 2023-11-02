@@ -6,15 +6,10 @@
 
 .item-list-container {
   border: 2px solid #ccc;
-  padding: 0; /* Remove padding from the container */
   border-radius: 5px;
-  max-height: 200px;
+  max-height: 200px; /* Set maximum height for the container */
   background-color: #f0f0f0;
-  overflow: auto;
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center;
+  overflow: auto; /* Enable scrolling when content overflows */
 }
 
 .selected {

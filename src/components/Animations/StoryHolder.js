@@ -44,9 +44,9 @@ function StoryHolder() {
           other: `${anything}`,
         }
       );
-      alert(
-        `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
-      );
+      //   alert(
+      //     `Successfully Submitted your order\n${person} ${meal} Size: ${size}\nBeans: ${bean} | Rice: ${rice} | ${protein} | Toasted: ${toasted}\nSalads:${salad}\nSauce: ${sauce}`
+      //   );
     } catch (error) {
       alert("Something went wrong, please contact James: ", error);
     }
