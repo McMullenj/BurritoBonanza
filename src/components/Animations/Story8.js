@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Stories.css";
 
-const images = ["/11AnythingElse.png"];
+const imagesBig = ["/11AnythingElse.png"];
+const imagesSmall = ["/11AnythingElse-Small.png"];
+let images = imagesBig
+
 
 const Story8 = ({ makeDecision, back }) => {
   const [anything, setAnything] = useState("");
@@ -15,6 +18,11 @@ const Story8 = ({ makeDecision, back }) => {
   };
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      images = imagesSmall;
+    } else {
+      images = imagesBig;
+    }
     document.body.style.backgroundImage = `url(${images[0]})`;
   });
 

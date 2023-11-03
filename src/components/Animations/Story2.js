@@ -13,7 +13,9 @@ const meals = [
 
 const sizes = ["Big", "Medium", "Small", "NA"];
 
-const images = ["/5ChooseMealAndSize.png"];
+const imagesBig = ["/5ChooseMealAndSize.png"];
+const imagesSmall = ["/5ChooseMealAndSize-Small.png"];
+let images = imagesBig;
 
 const timers = [8000];
 
@@ -56,6 +58,11 @@ const Story2 = ({ makeDecision, back }) => {
   }, [currentIndex]);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      images = imagesSmall;
+    } else {
+      images = imagesBig;
+    }
     document.body.style.backgroundImage = `url(${images[currentIndex]})`;
   }, [currentIndex]);
 

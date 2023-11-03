@@ -2,7 +2,10 @@ import ItemListMultiple from "../ItemListMultiple.js";
 import React, { useState, useEffect } from "react";
 import "./Stories.css";
 
-const images = ["/10ChooseSauce.png"];
+const imagesBig = ["/10ChooseSauce.png"];
+const imagesSmall = ["/10ChooseSauce-Small.png"];
+let images = imagesBig;
+
 const sauces = [
   "Basilo",
   "Chipotle",
@@ -21,6 +24,11 @@ const Story7 = ({ makeDecision, back }) => {
   };
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      images = imagesSmall;
+    } else {
+      images = imagesBig;
+    }
     document.body.style.backgroundImage = `url(${images[0]})`;
   });
 

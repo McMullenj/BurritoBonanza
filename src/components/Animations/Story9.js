@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Stories.css";
 
-const images = ["/12GiveBurrito.png", "/12OtherBurrito.png"];
+const imagesBig = ["/12GiveBurrito.png", "/12OtherBurrito.png"];
+const imagesSmall = ["/12GiveBurrito-Small.png", "/12OtherBurrito-Small.png"];
+let images = imagesBig;
 
 const Story9 = ({ makeDecision, makeDecision2, summary }) => {
   const { person, meal, size, toasted, bean, rice, protein, salad, sauce } =
@@ -66,6 +68,11 @@ const Story9 = ({ makeDecision, makeDecision2, summary }) => {
   const [currentText, setCurrentText] = useState(texts[0]);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      images = imagesSmall;
+    } else {
+      images = imagesBig;
+    }
     document.body.style.backgroundImage = `url(${images[currentIndex]})`;
   }, [currentIndex]);
 

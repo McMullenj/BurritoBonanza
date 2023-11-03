@@ -21,6 +21,7 @@ const people = [
   "Grace",
   "James",
   "Bjorn",
+  "Alex",
   "Corey",
   "Sophie",
   "Noah",

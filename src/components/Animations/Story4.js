@@ -2,7 +2,10 @@ import ItemList from "../ItemList.js";
 import React, { useState, useEffect } from "react";
 import "./Stories.css";
 
-const images = ["/7ChooseBeansAndRice.png"];
+const imagesBig = ["/7ChooseBeansAndRice.png"];
+const imagesSmall = ["/7ChooseBeansAndRice-Small.png"];
+let images = imagesBig;
+
 const yesno = ["Yes", "No"];
 const rices = ["White Rice", "Black Rice", "None"];
 
@@ -15,6 +18,11 @@ const Story4 = ({ makeDecision, back }) => {
   };
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      images = imagesSmall;
+    } else {
+      images = imagesBig;
+    }
     document.body.style.backgroundImage = `url(${images[0]})`;
   });
 

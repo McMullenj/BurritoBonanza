@@ -20,17 +20,26 @@ const people = [
   "Grace",
   "James",
   "Bjorn",
+  "Alex",
   "Corey",
   "Sophie",
   "Noah",
   "Just testing the app",
   'Other (Add to the "Anything else" section later on)',
 ];
-const images = [
+const imagesBig = [
   "/2DanaWantsBurrito.png",
   "/3DanThinksBurrito.png",
   "/4DanChoosesBurrito.png",
 ];
+
+const imagesSmall = [
+  "/2DanaWantsBurrito-Small.png",
+  "/3DanThinksBurrito-Small.png",
+  "/4DanChoosesBurrito-Small.png",
+];
+
+let images = imagesBig;
 
 //16000,9000,5000
 const timers = [16000, 9000, 7000];
@@ -118,6 +127,11 @@ const Story1 = ({ makeDecision }) => {
   }, [currentIndex]);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      images = imagesSmall;
+    } else {
+      images = imagesBig;
+    }
     document.body.style.backgroundImage = `url(${images[currentIndex]})`;
   }, [currentIndex]);
 
